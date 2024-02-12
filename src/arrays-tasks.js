@@ -471,8 +471,10 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const sortedArray = arr.sort((a, b) => b - a);
+  const maxItems = sortedArray.slice(0, n);
+  return maxItems;
 }
 
 /**
@@ -487,8 +489,8 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1.filter((item) => arr2.includes(item));
 }
 
 /**
@@ -577,8 +579,17 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const halfOfArray = Math.floor(arr.length / 2);
+  const head = arr.slice(0, halfOfArray);
+  const tail = arr.slice(-halfOfArray);
+  if (head.length + tail.length === arr.length) {
+    return tail.concat(head);
+  }
+  return tail.concat(arr.slice(halfOfArray, halfOfArray + 1), head);
 }
 
 module.exports = {
